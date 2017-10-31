@@ -27,7 +27,7 @@ public class LuaMain : LuaMainBase
 
 		luaenv.DoString("require 'LuaMain'");
 
-		//luaMainValue = luaenv.Global.Get<LuaMainValue>("MainValue");
+		luaMainValue = luaenv.Global.Get<LuaMainValue>("MainValue");
 		//uiManager = luaMainValue.GetUIManager();
 		//ShowMemory();
 		return luaMainValue;

@@ -106,6 +106,12 @@
     <Compile Include="Assets\Scripts\LuaMainValue.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\MainValue.cs" />
+    <Compile Include="Assets\XLua\Gen\DelegatesGensBridge.cs" />
+    <Compile Include="Assets\XLua\Gen\EnumWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\LuaMainValueBridge.cs" />
+    <Compile Include="Assets\XLua\Gen\PackUnpack.cs" />
+    <Compile Include="Assets\XLua\Gen\WrapPusher.cs" />
+    <Compile Include="Assets\XLua\Gen\XLuaGenAutoRegister.cs" />
     <Compile Include="Assets\XLua\Src\CodeEmit.cs" />
     <Compile Include="Assets\XLua\Src\CopyByValue.cs" />
     <Compile Include="Assets\XLua\Src\DelegateBridge.cs" />
@@ -140,6 +146,7 @@
     <None Include="Assets\Standard Assets\DOTween\readme.txt" />
     <None Include="Assets\Standard Assets\protobuf-net\Web\TODO.txt" />
     <None Include="Assets\XLua\CHANGELOG.txt" />
+    <None Include="Assets\XLua\Gen\link.xml" />
     <None Include="Assets\XLua\Resources\perf\memory.lua.txt" />
     <None Include="Assets\XLua\Resources\perf\profiler.lua.txt" />
     <None Include="Assets\XLua\Resources\tdr\tdr.lua.txt" />

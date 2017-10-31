@@ -32,7 +32,7 @@ public class App : MonoBehaviour
 		//MainValue.mxCSVManager.MapData.Read();
 
 		luaMain = new LuaMain();
-		//LuaMainValue luaMainValue = luaMain.InitLuaEnv();
+		LuaMainValue luaMainValue = luaMain.InitLuaEnv();
 
 		//MainValue.InitLua(luaMainValue);
 		luaMain.InitLuaEvent();

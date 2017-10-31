@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3EDBAEFC-0E31-A654-46D5-194FEFF727CB}</ProjectGuid>
+    <ProjectGuid>{BE708E9C-2AE2-B5E3-35A6-B8998D96D4C1}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2p3</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -96,39 +96,95 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Wolley.Plugins.csproj">
-      <Project>{A9C1AA12-E4E0-8BF0-5156-B54DFE80DC55}</Project>
-      <Name>Wolley.Plugins</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\JSON\JSONObject.cs" />
-    <Compile Include="Assets\JSON\JSONTemplates.cs" />
-    <Compile Include="Assets\JSON\VectorTemplates.cs" />
-    <Compile Include="Assets\Scripts\DontDestroyObject.cs" />
-    <Compile Include="Assets\Scripts\Main.cs" />
-    <Compile Include="Assets\XLua\Src\CodeEmit.cs" />
-    <Compile Include="Assets\XLua\Src\CopyByValue.cs" />
-    <Compile Include="Assets\XLua\Src\DelegateBridge.cs" />
-    <Compile Include="Assets\XLua\Src\GenAttributes.cs" />
-    <Compile Include="Assets\XLua\Src\GenConfig.cs" />
-    <Compile Include="Assets\XLua\Src\LuaBase.cs" />
-    <Compile Include="Assets\XLua\Src\LuaDLL.cs" />
-    <Compile Include="Assets\XLua\Src\LuaEnv.cs" />
-    <Compile Include="Assets\XLua\Src\LuaException.cs" />
-    <Compile Include="Assets\XLua\Src\LuaFunction.cs" />
-    <Compile Include="Assets\XLua\Src\LuaTable.cs" />
-    <Compile Include="Assets\XLua\Src\MethodWarpsCache.cs" />
-    <Compile Include="Assets\XLua\Src\ObjectCasters.cs" />
-    <Compile Include="Assets\XLua\Src\ObjectPool.cs" />
-    <Compile Include="Assets\XLua\Src\ObjectTranslator.cs" />
-    <Compile Include="Assets\XLua\Src\ObjectTranslatorPool.cs" />
-    <Compile Include="Assets\XLua\Src\SignatureLoader.cs" />
-    <Compile Include="Assets\XLua\Src\StaticLuaCallbacks.cs" />
-    <Compile Include="Assets\XLua\Src\TemplateEngine\TemplateEngine.cs" />
-    <Compile Include="Assets\XLua\Src\TypeExtensions.cs" />
-    <Compile Include="Assets\XLua\Src\Utils.cs" />
-    <Compile Include="Assets\image.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\BclHelpers.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\BufferExtension.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\BufferPool.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\CallbackAttributes.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Compiler\CompilerContext.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Compiler\CompilerDelegates.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Compiler\Local.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\DataFormat.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Extensible.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ExtensibleUtil.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\GlobalSuppressions.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Helpers.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\IExtensible.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\IExtension.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ImplicitFields.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\KeyValuePairProxy.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\AttributeMap.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\BasicList.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\CallbackSet.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\MetaType.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\RuntimeTypeModel.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\SubType.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\TypeFormatEventArgs.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\TypeModel.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Meta\ValueMember.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\NetObjectCache.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\PrefixStyle.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoContractAttribute.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoConverterAttribute.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoEnumAttribute.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoException.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoIgnoreAttribute.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoIncludeAttribute.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoMemberAttribute.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoReader.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ProtoWriter.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\SerializationContext.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\ArrayDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\BlobSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\BooleanSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\ByteSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\CharSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\CompiledSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\DateTimeSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\DecimalSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\DefaultValueDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\DoubleSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\EnumSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\FieldDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\GuidSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\IProtoSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\IProtoTypeSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\ISerializerProxy.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\ImmutableCollectionDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\Int16Serializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\Int32Serializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\Int64Serializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\KeyValuePairDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\ListDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\MemberSpecifiedDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\NetObjectSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\NullDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\ParseableSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\PropertyDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\ProtoDecoratorBase.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\ReflectedUriDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\SByteSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\SingleSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\StringSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\SubItemSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\SurrogateSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\SystemTypeSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\TagDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\TimeSpanSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\TupleSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\TypeSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\UInt16Serializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\UInt32Serializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\UInt64Serializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\Serializers\UriDecorator.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ServiceModel\ProtoBehaviorAttribute.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ServiceModel\ProtoBehaviorExtensionElement.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ServiceModel\ProtoEndpointBehavior.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ServiceModel\ProtoOperationBehavior.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\ServiceModel\XmlProtoSerializer.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\SubItemToken.cs" />
+    <Compile Include="Assets\Standard Assets\protobuf-net\WireType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\JSON\readme.txt" />

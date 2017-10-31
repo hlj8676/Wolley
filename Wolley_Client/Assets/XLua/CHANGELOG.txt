@@ -1,4 +1,59 @@
-﻿v2.1.7 2017年5月17日
+﻿v2.1.10 2017年9月18日
+新增特性
+1、新增DoNotGen配置，支持一个类型部分函数用反射，部分用生成；
+2、新增wrapper的emit；
+3、webgl支持；
+4、lua实现interface支持interface继承；
+5、window下支持android编译（由xdestiny110提供）；
+6、打包时，如果没执行过“Generate Code”将报错；
+
+变更
+1、	async_to_sync的改为resume错误时报错；
+2、il2cpp下，暂时去掉泛型的反射调用；
+3、升级到lua5.3.4并合入2017-9-1为止所有官方patch；
+
+bug修复
+1、C#仅声明delegate和MulticastDelegate，通过反射创建lua function映射时crash；
+2、解决一些古老版本window（比如xp）的dll兼容问题；
+
+v2.1.9 2017年8月10日
+新增特性
+1、新增最小生成模式（通过GEN_CODE_MINIMIZE切换），可以节省50%的text段空间；
+2、新增xlua.util.createdelegate，支持在lua直接用C#函数创建delegate而不需要通过lua适配；
+3、xlua.private_accessible支持public int Prop { get; private set; }
+4、新增	xlua.getmetatable、xlua.setmetatable、xlua.setclass、xlua.genaccessor，用以支持lua使用C#类型直接在lua侧完成；
+5、反射下扩展方法的支持；
+6、lua53版本支持位操作符重载：C#侧的位操作符重载对应到lua的位操作符重载；enum全部加上&和|位操作符；
+
+工程优化
+1、加入travis持续集成；
+
+变更
+1、LuaCallCSharp自动去除匿名类型；
+2、THREAD_SAFT改为THREAD_SAFE；
+3、GenFlag.GCOptimize标记为过时；
+4、删除过时的GenConfig配置方式；
+
+bug修复
+1、window phone下一些系统api是禁用的，源码中去掉；
+2、泛型约束是struct的时候，生成代码失败；
+3、unity2017 .net 4.6，枚举生成代码报错；
+
+v2.1.8 2017年6月27日
+新增特性
+1、Hotfix标签添加几个订制参数：ValueTypeBoxing、IgnoreProperty、IgnoreNotPublic、Inline、IntKey
+2、Hotfix代码注入优化，减少text段占用；
+3、Hotfix配置支持放Editor目录，可以减少text段占用；
+4、支持以指定类型传递object参数；
+5、反射调用Obsolete方法在Editor下打印warning；
+
+变更
+
+bug修复
+1、pinvoke独立设置的In，Out属性可能导致生成代码失败；
+2、如果业务在全局名字空间有和xLua名字空间的同名类，生成代码编译失败；
+
+v2.1.7 2017年5月17日
 新增特性
 1、支持发布UWP（含HoloLens，Xbox one，Win10 Mobile、Win10 PC）应用；
 2、支持对lua源代码ras+sha1签名；
@@ -287,4 +342,3 @@ v1.0.1 2015年11月30日
 
 v1.0.0 2015年03月30日
 第一个版本
-

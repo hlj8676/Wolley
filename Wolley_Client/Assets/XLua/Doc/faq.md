@@ -8,6 +8,8 @@ xLua目前以zip包形式发布，在工程目录下解压即可。
 
 可以，但生成代码目录需要配置一下（默认放Assets\XLua\Gen目录），具体可以看《XLua的配置.doc》的GenPath配置介绍。
 
+更改目录要注意的是：生成代码和xLua核心代码必须在同一程序集。如果你要用热补丁特性，xLua核心代码必须在Assembly-CSharp程序集。
+
 ## lua源码只能以txt后缀？
 
 什么后缀都可以。
@@ -43,6 +45,8 @@ ios和osx需要在mac下编译。
 在编辑器下xLua不生成代码都可以运行，出现这种提示，要么是该类型没加CSharpCallLua，要么是加之前生成过代码，没重新执行生成。
 
 解决办法，确认XXX（类型名）加上CSharpCallLua后，清除代码后运行。
+
+如果编辑器下没问题，发布到手机报这错，表示你发布前没生成代码（执行“XLua/Generate Code”）。
 
 ## hotfix下怎么触发一个event
 
@@ -148,7 +152,7 @@ end)
 
 在2.1.5~2.1.6版本把这个特性去掉，因为：1、这个特性会导致基类定义的方法、属性、字段等无法访问（比如Animation无法访问到GetComponent方法）；2、key为当前类某方法、属性、字段的名字的数据无法检索，比如Dictionary类型，dic['TryGetValue']返回的是一个函数，指向Dictionary的TryGetValue方法。
 
-建议直接方法该操作符的等效方法，比如List的Get，Dictionary的TryGetValue，如果该方法没有提供，可以在C#那通过Extension method封装一个使用。
+建议直接方法该操作符的等效方法，比如Dictionary的TryGetValue，如果该方法没有提供，可以在C#那通过Extension method封装一个使用。
 
 ## 有的Unity对象，在C#为null，在lua为啥不为nil呢？比如一个已经Destroy的GameObject
 
@@ -206,3 +210,118 @@ print(dic:TryGetValue('a'))
 
 要注意以上操作在Dispose之前完成。
 
+## C#参数（或字段）类型是object时，传递整数默认是以long类型传递，如何指明其它类型？比如int
+
+看[例子11](../Examples/11_RawObject/RawObjectTest.cs)
+
+
+## 如何做到先执行原来的C#逻辑，然后再执行补丁
+
+用util.hotfix_ex，可以调用原先的C#逻辑
+
+~~~lua
+local util = require 'xlua.util'
+util.hotfix_ex(CS.HotfixTest, 'Add', function(self, a, b)
+   local org_sum = self:Add(a, b)
+   print('org_sum', org_sum)
+   return a + b
+end)
+~~~
+
+## 怎么把C#的函数赋值给一个委托字段
+
+2.1.8及之前版本，你把C#函数当成一个lua函数即可，性能会略低，因为委托调用时先通过Birdage适配代码调用lua，然后lua再调用回C#。
+
+2.1.9 xlua.util新增createdelegate函数
+
+比如如下C#代码
+
+~~~csharp
+public class TestClass
+{
+    public void Foo(int a)
+    { 
+    }
+	
+    public static void SFoo(int a)
+    {
+    }
+｝
+public delegate void TestDelegate(int a);
+~~~
+
+你可以指明用Foo函数创建一个TestDelegate实例
+~~~lua
+local util = require 'xlua.util'
+
+local d1 = util.createdelegate(CS.TestDelegate, obj, CS.TestClass, 'Foo', {typeof(CS.System.Int32)}) --由于Foo是实例方法，所以参数2需要传TestClass实例
+local d2 = util.createdelegate(CS.TestDelegate, nil, CS.TestClass, 'SFoo', {typeof(CS.System.Int32)})
+
+obj_has_TestDelegate.field = d1 + d2 --到时调用field的时候将会触发Foo和SFoo，这不会经过Lua适配
+
+~~~
+
+## 为什么有时Lua错误直接中断了而没错误信息？
+
+一般两种情况：
+
+1、你的错误代码用协程跑，而标准的lua，协程出错是通过resume返回值来表示，可以查阅相关的lua官方文档。如果你希望协程出错直接抛异常，可以在你的resume调用那加个assert。
+
+把类似下面的代码：
+
+~~~lua
+coroutine.resume(co, ...)
+~~~
+
+改为：
+
+~~~lua
+assert(coroutine.resume(co, ...))
+~~~
+
+2、上层catch后，不打印
+
+比如某些sdk，在回调业务时，try-catch后把异常吃了。
+
+## 重载含糊如何处理
+
+比如由于忽略out参数导致的Physics.Raycast其中一个重载调用不了，比如short，int无法区分的问题。
+
+首先out参数导致重载含糊比较少见，目前只反馈（截至2017-9-22）过Physics.Raycast一个，建议通过自行封装来解决（short，int这种情况也适用）：静态函数的直接封装个另外名字的，如果是成员方法则通过Extension method来封装。
+
+如果是hotfix场景，我们之前并没有提前封装，又希望调用指定重载怎么办？
+
+可以通过xlua.tofunction结合反射来处理，xlua.tofunction输入一个MethodBase对象，返回一个lua函数。比如下面的C#代码：
+
+~~~csharp
+class TestOverload
+{
+    public int Add(int a, int b)
+    {
+        Debug.Log("int version");
+        return a + b;
+    }
+
+    public short Add(short a, short b)
+    {
+        Debug.Log("short version");
+        return (short)(a + b);
+    }
+}
+~~~
+
+我们可以这么调用指定重载：
+
+~~~lua
+local m1 = typeof(CS.TestOverload):GetMethod('Add', {typeof(CS.System.Int16), typeof(CS.System.Int16)})
+local m2 = typeof(CS.TestOverload):GetMethod('Add', {typeof(CS.System.Int32), typeof(CS.System.Int32)})
+local f1 = xlua.tofunction(m1) --切记对于同一个MethodBase，只tofunction一次，然后重复使用
+local f2 = xlua.tofunction(m2)
+
+local obj = CS.TestOverload()
+
+f1(obj, 1, 2) --调用short版本，成员方法，所以要传对象，静态方法则不需要
+f2(obj, 1, 2) --调用int版本
+~~~
+
+注意：xlua.tofunction由于使用不太方便，以及使用了反射，所以建议做作为临时方案，尽量用封装的方法来解决。

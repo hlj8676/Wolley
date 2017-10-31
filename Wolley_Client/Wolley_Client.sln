@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wolley_Client.Plugins", "Wolley_Client.Plugins.csproj", "{BE708E9C-2AE2-B5E3-35A6-B8998D96D4C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wolley_Client", "Wolley_Client.csproj", "{040788E2-EB85-6125-8CF3-63A89930B74D}"

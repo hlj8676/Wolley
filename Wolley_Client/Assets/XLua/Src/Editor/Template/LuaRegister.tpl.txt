@@ -25,6 +25,22 @@ namespace XLua.CSObjectWrap
 			    <%ForEachCsList(wraps, function(wrap)%>
 				translator.DelayWrapLoader(typeof(<%=CsFullTypeName(wrap)%>), <%=CSVariableName(wrap)%>Wrap.__Register);
 				<%end)%>
+				<% if generic_wraps then 
+				for generic_def, instances in pairs(generic_wraps) do
+				for _, args in ipairs(instances) do
+				local generic_arg_list = "<"
+				ForEachCsList(args, function(generic_arg, gai)
+					if gai ~= 0 then generic_arg_list = generic_arg_list .. ", " end
+					generic_arg_list = generic_arg_list .. CsFullTypeName(generic_arg)
+				end)
+				generic_arg_list = generic_arg_list .. ">"
+				
+				%>
+				translator.DelayWrapLoader(typeof(<%=generic_def.Name:gsub("`%d+", "") .. generic_arg_list%>), <%=CSVariableName(generic_def)%>Wrap<%=generic_arg_list%>.__Register);
+				<%
+				end
+				end
+				end%>
 				<%ForEachCsList(itf_bridges, function(itf_bridge)%>
 				translator.AddInterfaceBridgeCreator(typeof(<%=CsFullTypeName(itf_bridge)%>), <%=CSVariableName(itf_bridge)%>Bridge.__Create);
 				<%end)%>
@@ -43,7 +59,7 @@ namespace XLua
 		static XLua.CSObjectWrap.XLua_Gen_Initer_Register__ gen_reg_dumb_obj {get{return s_gen_reg_dumb_obj;}}
 	}
 	
-	public static partial class Utils
+	internal partial class InternalGlobals
     {
 	    <%
 		local type_to_methods = {}
@@ -61,9 +77,9 @@ namespace XLua
 		%><%if pi ~= 0 then%>, <%end%><%if parameter.IsOut then %>out <% elseif parameter.ParameterType.IsByRef then %>ref <% end %> <%=CsFullTypeName(parameter.ParameterType)%> <%=parameter.Name%><%
 		end)%>);
 		<%end)%>
-	    static Utils()
+	    static InternalGlobals()
 		{
-		    extension_method_map = new Dictionary<Type, IEnumerable<MethodInfo>>()
+		    extensionMethodMap = new Dictionary<Type, IEnumerable<MethodInfo>>()
 			{
 			    <%for _, methods_info in ipairs(seq_tbl) do%>
 				{typeof(<%=CsFullTypeName(methods_info.type)%>), new List<MethodInfo>(){
@@ -78,6 +94,9 @@ namespace XLua
 				}},
 				<%end%>
 			};
+			
+			genTryArrayGetPtr = StaticLuaCallbacks.__tryArrayGet;
+            genTryArraySetPtr = StaticLuaCallbacks.__tryArraySet;
 		}
 	}
 }

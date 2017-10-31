@@ -1,0 +1,38 @@
+package network.message;
+
+/** VIP通知信息 */
+message VipNtfInfo
+{
+	/** 当前VIP点数 */
+	required int32 currentPoint = 1;
+	/** 当前VIP等级 */
+	required int32 currentLevel = 2;
+	/** 下次登录可以获取的VIP点数 */
+	required int32 nextLoginPoint = 3;
+	/** 连续登录天数 */
+	required int32 cloginDays = 4;
+	required VipProgInfo prog = 5;
+}
+
+/** 免费VIP信息 */
+message VipProgInfo
+{
+	required int32 id = 1;
+	/** 临时VIP等级 */
+	required int32 level = 2;
+	/** 临时VIP开始时间 */
+	required int64 progStart = 3;
+	/** 临时VIP结束时间 */
+	required int64 progEnd = 4;
+	repeated VipCondInfo conditions = 5;
+}
+
+
+/** 达到条件给免费VIP信息 */
+message VipCondInfo
+{
+	/** 配制表ID */
+	required int32 condType = 1;
+	/** 主城达到某个等级或POWER达到某个点数时时给VIP(0表示无限制) */
+	required int64 condNumber = 2;
+}

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wolley.Plugins", "Wolley.Plugins.csproj", "{A9C1AA12-E4E0-8BF0-5156-B54DFE80DC55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wolley", "Wolley.csproj", "{3EDBAEFC-0E31-A654-46D5-194FEFF727CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wolley.Editor", "Wolley.Editor.csproj", "{5FD27323-C7FA-01E1-F8AD-5B1C8872B985}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9C1AA12-E4E0-8BF0-5156-B54DFE80DC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9C1AA12-E4E0-8BF0-5156-B54DFE80DC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9C1AA12-E4E0-8BF0-5156-B54DFE80DC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9C1AA12-E4E0-8BF0-5156-B54DFE80DC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EDBAEFC-0E31-A654-46D5-194FEFF727CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EDBAEFC-0E31-A654-46D5-194FEFF727CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EDBAEFC-0E31-A654-46D5-194FEFF727CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EDBAEFC-0E31-A654-46D5-194FEFF727CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD27323-C7FA-01E1-F8AD-5B1C8872B985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD27323-C7FA-01E1-F8AD-5B1C8872B985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD27323-C7FA-01E1-F8AD-5B1C8872B985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD27323-C7FA-01E1-F8AD-5B1C8872B985}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

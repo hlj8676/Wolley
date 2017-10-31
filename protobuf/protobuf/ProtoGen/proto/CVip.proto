@@ -1,0 +1,16 @@
+package network.message;
+
+import "CVipInfo.proto";
+
+/** VIP 通知，(登录时,获得VIP时，VIP升级时，限时VIP结束时通知 )*/
+message VipNtf
+{
+	required VipNtfInfo info = 1;
+}
+
+/** 升级通知 */
+message VipLevelUpNtf
+{
+	/** 当前等级 */
+	required int32 currentLevel = 1;
+}

@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wolley_Client.Plugins", "Wolley_Client.Plugins.csproj", "{BE708E9C-2AE2-B5E3-35A6-B8998D96D4C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wolley_Client", "Wolley_Client.csproj", "{040788E2-EB85-6125-8CF3-63A89930B74D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wolley_Client.Editor", "Wolley_Client.Editor.csproj", "{7AC6EE92-B74A-6B2F-16A3-BAB48E0FFA6C}"
+EndProject
+Project("{5697748A-77EF-44CA-8824-4F5637E5945B}") = "Wolley_Lua", "Wolley_Lua.luaproj", "{E439935D-B2A2-46AE-856D-2AA408428F33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,10 @@ Global
 		{7AC6EE92-B74A-6B2F-16A3-BAB48E0FFA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AC6EE92-B74A-6B2F-16A3-BAB48E0FFA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AC6EE92-B74A-6B2F-16A3-BAB48E0FFA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E439935D-B2A2-46AE-856D-2AA408428F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E439935D-B2A2-46AE-856D-2AA408428F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E439935D-B2A2-46AE-856D-2AA408428F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E439935D-B2A2-46AE-856D-2AA408428F33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

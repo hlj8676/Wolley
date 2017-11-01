@@ -1,4 +1,4 @@
-
+print('>  MainValue <')
 MainValue = { };
 --MainValue.uiManager = uiManager;
 --MainValue.gameGUI = uiManager.gameGUI;

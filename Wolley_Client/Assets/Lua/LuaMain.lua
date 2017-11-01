@@ -34,7 +34,7 @@ print('######################   luamain.lua')
 --
 --
 --
---require('MainValue');
+require('MainValue');
 --fontManager = MainValue.fontManager;
 --
 --

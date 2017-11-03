@@ -117,7 +117,10 @@
     <Compile Include="Assets\Scripts\Network\Common\NetworkController.cs" />
     <Compile Include="Assets\Scripts\Network\Common\ProtoSocket.cs" />
     <Compile Include="Assets\Scripts\Network\Common\SocketClient.cs" />
+    <Compile Include="Assets\Scripts\Network\Message\CLogin.cs" />
+    <Compile Include="Assets\Scripts\Network\Message\CUserInfo.cs" />
     <Compile Include="Assets\Scripts\Network\Message\IMessage.cs" />
+    <Compile Include="Assets\Scripts\Network\Message\ResultInfo.cs" />
     <Compile Include="Assets\Scripts\Network\ProtocalHandle\ProtocalHandle.cs" />
     <Compile Include="Assets\XLua\Gen\DelegatesGensBridge.cs" />
     <Compile Include="Assets\XLua\Gen\EnumWrap.cs" />

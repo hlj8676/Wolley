@@ -1,0 +1,31 @@
+package network.message;
+
+import "ResultInfo.proto";
+import "CUserInfo.proto";
+
+/** User登录请求 */
+message LoginRequest
+{
+	required int64 uid = 1;
+	required int64 ttp = 2;
+	required string token = 3;
+	required string udid = 4;
+	required string userName = 5;
+	required int32 accountType = 6;
+	required int32 serverId = 7;
+	required string version = 8;
+	optional string uid6w = 9;
+}
+
+/** User登录回应 */
+message LoginResponse
+{
+	required Result result = 1;
+	optional UserInfo userInfo = 2;
+}
+
+/** 踢User 下线  Result（重复登录或服务器关闭）*/
+message KickNtf
+{
+	required Result result = 1;
+}

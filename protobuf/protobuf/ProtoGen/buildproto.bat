@@ -1,4 +1,4 @@
-echo - cleanup
+@echo off
 if exist "%~dp0/protocs" rmdir /s /q "%~dp0/protocs"
 mkdir "%~dp0/protocs"
 
@@ -11,8 +11,8 @@ for %%i in (*.proto) do (
 cd ../protocs/
 rename *.proto *.cs
 
-::for %%i in (*.cs) do (
-::	move %%i ../../../../SLG_Client/Assets/Scripts/Network/Message/
-::)
+for %%i in (*.cs) do (
+	move %%i ../../../../Wolley_Client/Assets/Scripts/Network/Message/
+)
 
 pause

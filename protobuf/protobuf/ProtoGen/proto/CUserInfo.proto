@@ -1,0 +1,38 @@
+package network.message;
+
+//import "CMapAllianceInfo.proto";
+//import "CPstInfo.proto";
+
+/** User Info */
+message UserInfo
+{
+	required int64 uid = 1;
+	required int32 locationServerId = 2;
+	required int32 homeServerId = 3;
+	required string name = 4;
+	required int32 level = 5;
+	required int32 icon = 6;
+	required int64 power = 7;
+	required int64 killCount = 8;
+//	required Pst pst = 9;
+	required int32 powerRank = 10;
+	required int32 vip = 11;
+//	repeated MapTitleInfo title = 12;
+	required string jid = 13;
+	//required int32 likeNum = 14;
+	//required bool isLike = 15;
+	required string sign = 16;
+	required string avatar = 17;
+	required int32 lang = 18;
+	required int32 nationalFlag = 19;
+	//required int32 bitFlag = 20;
+	required bool newRole = 21;
+//	required UserAllianceBrief alliance = 22;
+}
+
+//message MapTitleInfo
+//{
+//	required int32 serverId = 1;
+//	required int32 titleId = 2;
+//	required int32 itleRank = 3;
+//}

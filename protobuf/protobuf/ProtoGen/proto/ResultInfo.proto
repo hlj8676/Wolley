@@ -1,0 +1,633 @@
+package network.message;
+
+/** 状态码 */
+enum Result{
+	/** 操作成功 */
+	SUCCESS = 0;
+
+	/** 操作失败 */
+	FAILURE = -1;
+
+	/** 没操作权限 */
+	NO_RIGHT = -2;
+
+	/** 基础数据不存在 */
+	BASEDATA_NOT_FOUND = -3;
+
+	//--user--------------------------------------------------
+	/**  参数不合法. */
+	PARAM_INVALID = -1000;
+
+	/**  账户已登录. */
+	USER_ID_REPEAT = -1001;
+
+	/**  密码不正确. */
+	PASSWORD_INVALID = -1002;
+
+	/**  登录令牌已失效. */
+	LOGIN_KEYWORD_TIMEOUT = -1003;
+	
+	/** 服务器关闭 **/
+	SERVER_STOP = -1004;
+
+	/** 服务器未开启 **/
+	SERVER_NOT_OPEN = -1005;
+	
+	/** 账号不存在 **/
+	USER_NOT_EXIST = -1006;
+	
+	/** 账号已存在 **/
+	USER_EXISTED = -1007;
+
+	/** 账号注册错误 **/
+	USER_REGISTER_ERROR = -1008;
+	
+	/** 用户名格式错误 **/
+	BAD_USER_NAME = -1009;
+	
+	/** 用户名已经被使用 **/
+	USER_NAME_EXISTED = -1010;
+	
+	/** 用户名中有敏感词 **/
+	BAD_WORDS = -1011;
+	
+	/** 玩家发送数据非法 */
+	INVALID_DATA_FROM_USER = -1012;
+	
+	/** 用户名错误 */
+	USER_ID_ERROR = -1013;
+	
+	/**  搜索模式不合法 */
+	BAD_SEARCH_MODE = -1014;
+
+	/**  搜索类型不合法 */
+	BAD_SEARCH_TYPE = -1015;
+	
+	/**  版本错误 */
+	VERSION_ERROR = -1016;
+	
+	/** 运行时错误 */
+	RUNTIME_ERROR = -1017;
+	
+	/** 设置相应参数重复 */
+	PARAM_REPEAT = -1018;
+	
+	/** 平台ID不相符 */
+	USER_PLATFORM_ID_ERROR = -1019;
+	
+	/** TOKEN验证无效 */
+	USER_TOKEN_INVALID = -1020;
+	
+	/** 配制不存在 */
+	CONFIG_NOT_EXIST = -1021;
+	
+	//--building--------------------------------------------------
+	/**  建筑修建队列己满. */
+	BUILDING_PROGRESS_DISABLE = -2000;
+	/**  错误的建筑位置 */
+	BAD_BUILDING_POS = -2001;
+	/**  指定位置上已经存在建筑 */
+	BUILDING_POS_USED = -2002;
+	/**  已经加入等待队列 */
+	BUILDING_WAITING_POS_EXIST = -2003;
+	/**  建筑类型错误 */
+	BAD_BUILDING_TYPE = -2004;
+	/**  无法修建该类型的建筑 */
+	BUILDING_LIMITED = -2005;
+	/**  前置建筑物检查失败 */
+	PREV_BUILDING_CHECK_ERR = -2006;
+	/**  建筑创建内部错误 */
+	ADD_BUILDING_ERR = -2007;
+	/**  找不到指定建筑物 */
+	BAD_BUILDING_ID = -2008;
+	/**  找不到指定队列 */
+	PROG_CAN_NOT_FIND = -2009;
+	/**  未达到最大free时间限制 */
+	MAXN_FREE_TIME_EXCEEDED = -2010;
+	/**  收菜最低时间限制 */
+	BUILDING_HARVEST_MIN_TIME = -2011;
+	/**  队列类型错误 */
+	PROG_TYPE_ERROR = -2012;
+	/**  禁止拆队该建筑物 */
+	BUILDING_REMOVE_DISABLE = -2013;
+	/**  钻石解绑时间未到 */
+	DIAMOND_MINE_UNBIND_TOO_BUSY = -2014;
+	/**  每天开启箱子次数限制 */
+	BUILDING_HARVEST_CHEST_LIMIT = -2015;
+	/**  找不到箱子 */
+	BUILDING_HARVEST_CHEST_NOT_FOUND = -2016;
+	/**  工会黑市币不足 */
+	ALLIANCE_FUND_LIMIT = -2017;
+	/**  目标不在当前服务器 */
+	TARGET_NOT_CURRENT_SERVER = -2018;
+	
+	//--resource--------------------------------------------------
+	/**  钞票不足 */
+	CASH_LIMIT = -2100;
+	/**  钻石不足 */
+	DIAMOND_LIMIT = -2101;
+	/**  能源不足 */
+	ENERGY_LIMIT = -2102;
+	/**  食物不足 */
+	FOOD_LIMIT = -2103;
+	/**  石油不足 */
+	OIL_LIMIT = -2104;
+	/**  钢铁不足 */
+	STEEL_LIMIT = -2105;
+	/**  骨牌不足 */
+	DOMINO_LIMIT = -2106;
+	/**  资源类型错误 */
+	UNKNOWN_RESOURCE = -2107;
+
+	//--quest--------------------------------------------------
+	/**  任务未完成 */
+	QUEST_NOT_FINISH = -2200;
+	/**  任务奖励已经领取 */
+	QUEST_REWARD_HAVE_RECEIVE = -2201;
+	/**  没有该任务信息 */
+	QUEST_NOT_INFO = -2202;
+	/**  日常任务开启数量已满 */
+	QUEST_DAILY_FULL = -2203;
+	/**  联盟任务开启数量已满 */
+	QUEST_ALLIANCE_FULL = -2204;
+	/**  任务不存在 */
+	QUEST_NOT_EXIST = -2205;
+	/**  小助手奖励重复领取(日志任务重复领取) */
+	DAILY_EVENT_REWARD_REPEAT = -2206;
+	/**  小助手奖励不存在(日志任务不存在) */
+	DAILY_EVENT_REWARD_NO_FOUND = -2207;
+	
+	//--item--------------------------------------------------
+	/**  道具行为类型错误 */
+	ITEM_BEHAVIOR_NO_FOUND = -2300;
+	/**  道具类型错误 */
+	ITEM_TYPE_ERR = -2301;
+	/**  无法使用道具 */
+	ITEM_CAN_NOT_USE = -2302;
+	/**  道具过期无法使用 */
+	ITEM_USE_EXPIRED = -2303;
+	/**  道具使用等级限制 */
+	ITEM_USE_LEVEL_LIMIT = -2304;
+	/**  道具数量错误 */
+	ITEM_CNT_ERR = -2305;
+	/**  道具行为执行参数错误 */
+	ITEM_BEHAVIOR_WRONG_ARGS = -2306;
+	/**  未促销 */
+	ITEM_NO_FOUND_PROMOTION = -2307;
+	/**  过期促销 */
+	ITEM_PROMOTE_TIMEOUT = -2308;
+	/**  促销限购 */
+	ITEM_PROMOTE_BUY_LIMIT = -2309;
+	/**  材料不够 */
+	MATERIALS_LIMIT = -2310;
+	/**  材料类型错误 */
+	MATERIALS_TYPE_ERROR = -2311;
+	
+	//--troop--------------------------------------------------
+	/**  错误的部队类型 */
+	TROOP_TYPE_ERROR = -2400;
+	/**  部队修建队列已满 */
+	TROOP_PROGRESS_DISABLE = -2401;
+	/**  部队生产数量错误 */
+	TROOP_TRAIN_CNT_ERROR = -2402;
+	/**  部队数量错误 */
+	TROOP_CNT_ERROR = -2403;
+	
+	//--research--------------------------------------------------
+	/**  前置科技条件不满足 */
+	RESEARCH_PRETECH_LIMIT = -2500;
+	/**  科技类型不存在 */
+	RESEARCH_NOT_EXIST = -2501;
+	/**  科技研究队列己满 */
+	RESEARCH_PROGRESS_DISABLE = -2502;
+	/**  找不到对应类型的科技 */
+	RESEARCH_BAD_TYPE = -2503;
+	/**  科技状态不对 */
+	RESEARCH_STATUS_LIMITED = -2504;
+	/**  加入科研等待队列 */
+	RESEARCH_WAITING = -2505;
+		
+	//--blackmarket--------------------------------------------------
+	/**  错误的黑市商店类型 */
+	BAD_BLACKMARKET_TYPE = -2551;	
+	/**  错误的黑市商品ID */
+	BAD_BLACKMARKET_ITEM_ID = -2552;	
+	/** 购买数量有限 */
+	BLACKMARKET_BUY_LIMIT = -2553;
+
+	//--ranking--------------------------------------------------
+	/**  排行榜还没有数据 */
+	RANK_NOT_EXIST = -2600;
+	/**  错误的排行榜类型 */
+	BAD_RANK_TYPE = -2601;
+	
+	//--hero--------------------------------------------------
+	/**  英雄ID错误 */
+	HERO_ID_ERROR = -2700;
+	/**  当前天赋页已经生效 */
+	HERO_PAGE_ALREADY_WORK = -2701;
+	/**  找不到对应天赋页 */
+	HERO_PAGE_NOT_FIND = -2702;
+	/**  找不到对应英雄 */
+	HERO_NOT_FIND = -2703;
+	/**  英雄活着 */
+	HERO_IS_ALIVE = -2704;
+	/**  英雄状态错误 */
+	HERO_STATUS_ERROR = -2705;
+	/**  英雄天赋点错误 */
+	HERO_TALENT_POINTS_ERROR = -2706;
+	/**  英雄天赋类型错误 */
+	HERO_TALENT_TYPE_ERROR = -2707;
+	/**  英雄天赋等级错误 */
+	HERO_TALENT_LEVEL_ERROR = -2708;
+	/**  英雄前置天赋错误 */
+	HERO_PREVIOUS_TALENT_ERROR = -2709;
+	/**  英雄形象错误 */
+	HERO_MODEL_ERROR = -2710;
+	/**  英雄不可用 */
+	HERO_NOT_AVAILABLE = -2711;
+	/**  找不到副官 */
+	OFFICER_CANNOT_FIND = -2712;
+	/**  副官已经被招募 */
+	OFFICER_ALREADY_EXIT = -2713;
+	/**  副官特性错误 */
+	OFFICER_KIND_ERROR = -2714;
+	/**  副官材料不足 */
+	OFFICER_MATERIALS_LIMIT = -2715;
+	/**  星级等级限制 */
+	OFFICER_STAR_LIMIT = -2716;
+	/**  副官已经被装备 */
+	OFFICER_ALREADY_EQUIPED = -2717;
+	/**  副官位置未解锁 */
+	OFFICER_POS_IS_LOCKED = -2718;
+	/**  副官装备位置和类型不匹配 */
+	OFFICER_POS_ERROR = -2719;
+	/**  对象等级限制 */
+	OFFICER_LEVEL_LIMIT = -2720;
+	/**  位置为空 */
+	OFFICER_POS_IS_EMPTY = -2721;
+	/**  副官未被装备 */
+	OFFICER_NOT_EQUIPED = -2722;
+	/**  副官装备镶嵌位置错误 */
+	OFFICER_EMBED_POS_ERROR = -2723;
+	/**  副官装备镶嵌同类型错误 */
+	OFFICER_EMBED_TYPE_ERROR = -2724;
+	/**  找不到对应技能 */
+	HERO_SKILL_NOT_FIND = -2725;
+	/**  技能未解锁 */
+	HERO_SKILL_NOT_ONLOCK = -2726;
+	/**  技能已经解锁 */
+	HERO_SKILL_ONLOCK = -2727;
+	/**  技能配制不存在 */
+	HERO_SKILL_NOT_CONFIG = -2728;
+	/**  技能等级已经到最大，或者下一级技能配制未找到 */
+	HERO_SKILL_MAX = -2729;
+	/**  技能未开放 */
+	HERO_SKILL_UNOPEN = -2730;
+	/**  英雄等级未达到解锁条件 */
+	HERO_LEVEL_LIMIT = -2731;
+	/**  英雄形象未解锁 */
+	HERO_MODEL_NOT_ONLOCK = -2732;
+	/**  英雄形象已解锁 */
+	HERO_MODEL_ALREADY_ONLOCK = -2733;
+	
+	//--chest--------------------------------------------------
+
+	/**  宝箱信息错误 */
+	CHEST_ERROR = -2800;
+	/**  宝箱过期 */
+	CHEST_EXPIRED_ERROR = -2801;
+	
+	//--newbie guide--------------------------------------------------
+	
+	NEWBIE_GUIDE_SKIP_ERR = -2821;
+	
+	//--pay--------------------------------------------------
+
+	/**  支付物品不存在 */
+	IAP_PACKAGEID_NOFOUND = -2900;
+	/**  支付验证失败 */
+	IAP_VERIFY_ERR = -2901;
+	/**  订单验证次数过多 */
+	IAP_VERIFY_REPEAT = -2902;
+	/**  支付平台类型错误 */
+	IAP_PAY_TYPE_ERR = -2903;
+	
+	//--WorldMap--------------------------------------------------
+	//---grid----
+	// 玩家出生点错误
+	USER_BORN_ERROR = -3001;
+	//地图坐标错误
+	GRID_PST_ERROR = -3002;
+	//TILE地图坐标错误
+	TILE_PST_ERROR = -3003;
+	//----- RELOCATE ----------
+	// 玩家处于rally状态无法飞城
+	RELOCATE_COND_RALLY_LIMIT                 = -3004;
+	// 玩家正处于行军状态无法飞城 
+	RELOCATE_COND_MARCHING_LIMIT              = -3005;
+	// 玩家正处于遗迹战支援状态无法飞城
+	RELOCATE_COND_MONUMENT_REINFORCE_LIMIT    = -3006;
+	// 执行主城搬迁操作失败
+	RELOCATE_CITY_INTERNAL_ERROR = -3007;
+	// 不能传送到别人领土上
+	RELOCATE_DOMINION_ALLIANCE_ERROR = -3008;
+	
+	//---march----
+	// 不能指派英雄
+	CANNOT_ASSIGN_HERO = -3101;
+	// 英雄不在城市中
+	HERO_NOT_IN_CITY = -3102;
+	// 行军部队不足
+	MARCH_TROOP_ERROR = -3103;
+ 	// 行军类型错误
+	MARCH_TYPE_ERROR = -3104;
+	// 行军队列已满
+	MARCH_PROG_LIMIT = -3105;
+	// 行军部队数量限制    
+	MARCH_ARMY_CNT_LIMIT = -3106;
+	// 部队不足   
+	MARCH_ARMY_NOT_ENOUGH = -3107;
+	// 目标点无法占领
+	CAN_NOT_OCCUPY = -3108;
+	// 非相邻地块不能占领
+	TILE_NOT_UPON_ALLIANCE = -3109;
+	// 无法向同一公会成员行军
+	CAN_NOT_OCCUPY_ALLIANCE_MEMBER = -3110;
+	// 城市遗址不能占领
+	TILE_RUINS_CANT_OCCUPY = -3111;
+	// 行军超过最大时间
+	MARCH_TIME_LIMIT = -3112;
+	// 等级不够，不能侦查
+	CAN_NOT_SCOUT_DUETO_LV = -3113;
+	// 无法侦察指定目标
+	CAN_NOT_SCOUT = -3114;
+	//该次行军不能加速
+	MARCH_CAN_NOT_SPEEDUP = -3115;
+	// 行军ID错误
+	MARCH_ID_ERROR = -3116;
+	// 该次行军不能被取消
+	MARCH_CAN_NOT_RECALL = -3117;
+	// 叛军不存在
+	REBEL_NO_FOUND = -3118;
+	// 行动力不足 
+	REBEL_POINT_NOT_ENOUGH = -3119;
+	// 设置阵型错误
+	INEXISTENCE_STYLE = -3120;
+	// 正在攻击时无法开启护盾
+	SHIELD_COND_ATKING_LIMIT = -3121;
+	// 正在被其他玩家援助时无法开启护盾
+	SHIELD_COND_BE_REINFORCE_LIMIT = -3122;
+	// 正在援助其他玩家时无法开启护盾 
+	SHIELD_COND_REINFORCE_LIMIT = -3123;
+	// 正在Rally时无法开启护盾   
+	SHIELD_COND_RALLY_LIMIT = -3124;
+	// 在城市遗迹上无法开启护盾  
+	SHIELD_COND_BASE_TYPE_RUINS = -3125;
+	// 总统无法开启护盾   
+	SHIELD_COND_PRESEND_LIMIT = -3126;
+	// 玩家有俘虏   
+	SHIELD_HAS_CAPTIVE_LIMIT = -3127;
+	// 无法援助指定目标
+	CAN_NOT_REINFORCE = -3128;
+	// 无法找到援助部队
+	CAN_NOT_REINFORCE_BACK = -3129;
+	// 对方援助部队数量已满
+	REINFORCE_CAPACITY_LIMIT = -3130;
+	// 建筑不能移动
+	BUILDING_CANT_MOVE = -3131;
+	// 建筑状态错误
+	BUILDING_STATUS_ERR = -3132;
+	// 建筑内部错误 
+	BUILDING_INTER_ERR = -3133;
+	// 建筑已经在升级中   
+	BUILDING_PROG_EXIST = 3134;
+	// 建筑不能被删除
+	BUILDING_CANT_REMOVE = 3135;
+	// 建筑不能升级  
+	BUILDING_CANT_UPGRADE = 3136;
+	// 部队不存在
+	GROUP_NOT_EXIST = -3137;
+	// 非玩家所在公会领土
+	TILE_NOT_YOUR_ALLIANCE = -3138;
+	//PVE等级不足
+	PVE_LEVEL_NOT_ENOUGH = -3139;
+	/** 陈型类型错误 */
+	STYLE_TYPE_ERROR = -3140;
+	/** 占领首都已达上限 */
+	OCCUPY_CAPITAL_LIMIT = -3141;
+	/** 首都当前不能修改税率 **/
+	CAPITAL_CANT_SET_TAX = -3142;
+	/** 首都修改税率次数达到上限 **/
+	CAPITAL_SET_TAX_LIMIT = -3143;
+	
+	//--Mail--------------------------------------------------
+	//邮件不存在
+	MAIL_NOT_EXIST = -4001;
+	//邮件已经被保存
+	MAIL_ALREADY_SAVED = -4002;
+	//邮件保存失败
+	MAIL_SAVE_FAIL = -4003;
+	//邮件删除失败
+	MAIL_DELETE_FAIL = -4004;
+
+	// 战报从 -4021 开始
+	//没有找到请求的战报
+	UNKNOW_FIGHT_REPORT = -4021;
+	//不是一封战报邮件
+	BAD_FIGHT_REPORT = -4022;
+	//分析战报错误
+	SHARE_FIGHT_REPORT_FAIL = -4023;
+	// 无法对地图隐藏的玩家赠送资源
+	CAN_NOT_SEND_RES_TO_HIDING_USER = -4024;
+	// 无法运送 
+	CAN_NOT_SEND = -4025;
+	// 对方贸易站未解锁
+	TRADING_POST_UNLOCK_ERR = -4026;
+	// 资源数量错误
+	RES_CNT_ERR = -4027;
+	// 无法发起Rally
+	CAN_NOT_RALLY = -4028;
+	// 找不到指定公会战
+	BAD_RALLY_ID = -4029;
+	// 无法发起RallyReinforce 集结援助
+	CAN_NOT_RALLY_REINFORCE = -4030;
+	// 公会战援助部队限制
+	RALLY_REINFORCE_TROOP_LIMIT = -4031;
+	// 已经向公会战援助过部队了
+	RALLY_REINFORCE_DUP_ERROR = -4032;
+	
+	//--event--------------------------------------------------
+	/**  错误的活动事件ID */
+	BAD_EVENT_ID = -4100;
+	
+	//--alliance(5000-6000暂时只给联盟)---------------------------
+	/**  玩家已经在公会中无法创建或加入 */
+	USER_ALREADY_IN_ALLIANCE = -5000;
+	/**  创建公会时名称错误 */
+	CREATE_ALLIANCE_NAME_ERROR = -5001;
+	/**  主城等级不足无法创建公会 */
+	CREATE_ALLIANCE_BUILDING_LEVEL_ERR = -5002;
+	/**  公会名不合法 */
+	BAD_ALLIANCE_NAME = -5003;
+	/**  公会名已经存在 */
+	ALLIANCE_NAME_EXIST = -5004;
+	/**  公会简称不合法 */
+	BAD_ALLIANCE_ABBR = -5005;
+	/**  公会简称已经存在 */
+	ALLIANCE_ABBR_EXIST = -5006;
+	/**  已经在公会中无法创建新公会 */
+	CREATE_ALLIANCE_ERROR = -5007;
+	/**  公会ID错误 */
+	BAD_ALLIANCE_ID = -5008;
+	/**  公会会长无法退出 (不能加入别的公会)*/
+	YOU_ARE_ALLIANCE_RANK_OWNER = -5009;
+	/**  已经发送入会申请 */
+	ALREADY_APPLY_JOIN_ALLIANCE = -5010;
+	/**  公会成员数量限制 */
+	ASMEMBER_SIZE_LIMIT_EXCEEDED = -5011;
+	/**  玩家尚未加入任何公会，无法完成指定操作(先退出所在公会在申请) */
+	USER_NOT_IN_ALLIANCE = -5012;
+	/**  加入公会操作错误 (服务器没能自动给玩家退出老公会时，加入公会失败时) */
+	JOIN_ALLIANCE_ERROR = -5013;
+	/**  捐赠次数限制 */
+	ALLIANCE_DONATE_LIMIT = -5014;
+	/**  已经请求过help */
+	HAS_REQUEST_HELP = -5015;
+	/** 不在同一个公会 */
+	NOT_IN_SAME_ALLIANCE = -5016;
+	/** 无法找到援建 */
+	HELP_CAN_NOT_FIND = -5017;
+	/** 已经提供了援建 */
+	ALREADY_HAS_OFFERED_HELP = -5018;
+	/** 达到最大援建次数 */
+	HELP_TIMES_EXCEEDED = -5019;
+	/**  错误的公会会阶 */
+	ERROR_ALLIANCE_RANK = -5500;
+	/**  错误的默认语言 */
+	ERROR_ALLIANCE_LANG = -5501;
+	/**  错误的公会标志 */
+	ERROR_ALLIANCE_LOGO = -5502;
+	/**  错误的公会公告 */
+	ERROR_ALLIANCE_DESC = -5503;
+	/**  错误的公会简介 */
+	ERROR_ALLIANCE_HEADLINE = -5504;
+	/**  没有提升会阶权限 */
+	NO_PROMOTE_PERMISSION = -5505;
+	/**  没有提降低会阶权限 */
+	NO_DEMOTE_PERMISSION = -5506;
+	/**  当前公会会阶人数超过上限 */
+	ALLIANCE_RANK_LIMIT_EXCEED = -5507;
+	/**  r4成员不能属于小队 */  
+	ALLIANCE_R4_MUST_NO_SQUAD = -5508;
+	/**  玩家的公会权限不够支撑其完成制定操作 */  
+	ALLIANCE_PERMISSION_ERROR = -5509;
+	/**  错误的公会头衔 */  
+	BAD_ALLIANCE_TITLE = -5510;
+	/**  没有找到指定公会宝箱 */  
+	NO_FOUND_ALLIANCE_GIFT = -5511;
+	/**  公会宝箱过期 */  
+	ALLIANCE_GIFT_EXPIRED = -5512;
+	/**  已经申请过工会资源（还没审批） */  
+	ALREADY_APPLIED_ALLIANCE_RESOURCE = -5513;
+	/**  非法的工会资源申请 */  
+	INVALID_ALLIANCE_RES_APPLY = -5514;
+	/**  非法的工会资源申请 */  
+	ALLIANCE_RES_LIMIT = -5515;
+	/**  没有工会转让权限 */  
+	NO_TRANSFER_PERMISSION = -5516;
+	
+	//-- platform (6000 -6200暂时只给平台)---------------------------
+	/**  平台 server 错误 */  
+	PLATFORM_SERVER_ERR = -6001;
+	/**  平台 TOKEN 错误 */  
+	PLATFORM_INVAILD_ACCESSTOKEN = -6002;
+	/**  游戏服务器回调 错误 */  
+	LOCAL_SERVER_ERR = -6003;
+	PLATFORM_DATA_ERR = -6004;
+ 	PLATFORM_GET_URL_ERR = -6005;
+	PUSH_SEND_ERR = -6006;
+	/** send类型错误 */
+	PLATFORM_SEND_TYPE_ERR = -6007;
+	/** 回包错误 */
+	PLATFORM_SEND_RESP_ERR = -6008;
+	/** URL解析错误 */
+	PLATFORM_URL_PARSE_ERR = -6009;
+	/** 回包状态码不是200 */
+	PLATFORM_SEND_STATUS_ERR = -6010;
+	/** JSON解析错误 */
+	PLATFORM_UNMARSHAL_ERR = -6011;
+	
+	//--activity(6200-6500)---------------------------
+	/**  重复领取奖励 */  
+	ACTIVITY_ALREADY_RW = -6200;
+	/**  没有对应奖励(对应等级或者日期) */  
+	ACTIVITY_NOT_CONFIG_RW = -6201;
+	/**  领取奖励目标未达成(首充、英雄等级、战斗力未达到要求) */  
+	ACTIVITY_RW_TARGET_FAILED = -6202;
+	/**  日期错误 */ 
+	ACTIVITY_DATE_ERROR = -6203;
+	/**  抽奖数量错误 */ 
+	ACTIVITY_NUM_ERROR = -6204;
+	/**  没有对应配制 */  
+	ACTIVITY_NOT_CONFIG = -6205;
+	/**  重复参加活动 */  
+	ACTIVITY_ALREADY = -6206;
+	/**  未达到活动条件 */  
+	ACTIVITY_NOT_CONDITIONS = -6207;
+	/**  没有该活动ID */  
+	ACTIVITY_NOT_ID = -6208;
+	/**  参数错误 */  
+	ACTIVITY_PARAM_ERROR = -6209;
+	/**  卡过期(周卡或者月卡) */
+	ACTIVITY_CARD_INVAILD = -6210;
+	/**  重复领取(周卡或者月卡) */
+	ACTIVITY_CARD_REPEAT = -6211;
+	
+	//--代理服务器(6500-6800)---------------------------
+	/**  模板不存在(可能未同步) */  
+	KEY_NOT_FIND = -6500;
+	/**  参数不足 */  
+	PARMS_NOT_ENOUGH = -6501;
+	/**  找不到对应语言 */  
+	LANG_NOT_FIND = -6502;
+	/**  GM指令未开启 */  
+	GM_CMD_TURN_OFF = -6503;
+	/**  GM指令不存在 */  
+	GM_CMD_NOT_EXIST = -6504;
+	/**  GM指令参数类型错误 */  
+	GM_CMD_INVALID_PARAMS = -6505;
+	/**  GM指令表达错误 */ 
+	GM_CMD_INVALID_EXP = -6506;
+	/**  GM指令参数不够 */  
+	GM_CMD_NOT_ENOUGH_PARAMS = -6507;
+	
+	//--PVE(6800-6900)---------------------------
+	/**  关卡ID错误 */  
+	PVE_LEVEL_ID_ERROR = -6801;
+	/**  没有找到指定的关卡或章节奖励配制 */  
+	PVE_NOT_CONFIG = -6802;
+	/**  前置关卡不满足 */  
+	PVE_PRE_LEVEL_LIMIT = -6803;
+	/**  领取奖励条件不满足 */  
+	PVE_REWARD_LIMIT = -6804;
+	/**  奖励重复领取 */  
+	PVE_ALREADY_REWARD = -6805;
+	/**  战斗结果异常 */  
+	PVE_FIGHT_ERROR_RESULT = -6806;
+	/**  扫荡关卡星级未达到 */  
+	PVE_STAR_ERROR = -6807;
+	
+	// --环球军演PVP (6901-7000)---------------------------
+	PVP_NO_AVAILABLE_TIMES = -6901;	// 免费军演次数已用完
+	PVP_RANK_CHANGED = -6902;		// 玩家排名发生变化，需重新请求
+	PVP_MANOEUVRE_CLOSED = -6903;		// 军演在周日21点-22点间关闭，22点后重新开放
+
+	//--环球军演Shop--------------------------------------------------
+	/**  错误的军演商店商品ID */
+	BAD_MANOEUVRE_SHOP_ITEM_ID = -6921;	
+	/** 军演积分不够 */
+	MANOEUVRE_NOT_ENOUGH_SCORE = -6922;
+	/** 购买数量有限 */
+	MANOEUVRE_SHOP_BUY_LIMIT = -6923;
+}

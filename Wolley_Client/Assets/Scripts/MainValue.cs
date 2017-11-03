@@ -49,7 +49,7 @@ public class MainValue
 	{
 		//networkController = NetworkController.getInstance();
 
-		//Protocal_Handle.Init();
+		Protocal_Handle.Init();
 		//csvManager.Init();
 
 		//string lang = UnityUtil.UnityHelper.GetPlayerPrefsString(DefaultLanguageKey);

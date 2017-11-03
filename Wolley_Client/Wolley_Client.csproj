@@ -122,6 +122,8 @@
     <Compile Include="Assets\Scripts\Network\Message\IMessage.cs" />
     <Compile Include="Assets\Scripts\Network\Message\ResultInfo.cs" />
     <Compile Include="Assets\Scripts\Network\ProtocalHandle\ProtocalHandle.cs" />
+    <Compile Include="Assets\Scripts\Network\ProtocalHandle\Request\RequestLogin.cs" />
+    <Compile Include="Assets\Scripts\Network\ProtocalHandle\Response\ResponseLogin.cs" />
     <Compile Include="Assets\XLua\Gen\DelegatesGensBridge.cs" />
     <Compile Include="Assets\XLua\Gen\EnumWrap.cs" />
     <Compile Include="Assets\XLua\Gen\LuaMainValueBridge.cs" />

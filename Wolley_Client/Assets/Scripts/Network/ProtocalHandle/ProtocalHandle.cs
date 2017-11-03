@@ -12,7 +12,7 @@ public class Protocal_Handle
 	public static void Init()
 	{
 		//Protocal.ResponseBuilding.OnRegister();
-		//Protocal.ResponseLogin.OnRegister();
+		Protocal.ResponseLogin.OnRegister();
 		//Protocal.ResponseResources.OnRegister();
 		//Protocal.ResponseTimer.OnRegister();
 		//Protocal.ResponseQuest.OnRegister();

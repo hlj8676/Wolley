@@ -24,7 +24,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Compile Include="AnimateHelp.lua" />
+    <Compile Include="LuaMain.lua" />
+    <Compile Include="MainValue.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AnimateHelp.lua.meta" />
+    <Content Include="LuaMain.lua.meta" />
+    <Content Include="MainValue.lua.meta" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
